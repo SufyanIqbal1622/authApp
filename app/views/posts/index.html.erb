@@ -1,6 +1,8 @@
 
 <h1>Posts</h1>
-
+<% if can? :manage, Post.new %>
+  <%= link_to "New post", new_post_path , class:"btn btn-outline-primary"%>
+<% end %>
 <div class='row d-flex col-12 ' id="posts">
   <% @posts.each do |post| %>
     <div class="card col-6 p-4 m-2">
@@ -11,7 +13,4 @@
     </div>
   <% end %>
 </div>
-<% if can? :manage, Post.new %>
-<%= link_to "New post", new_post_path , class:"btn btn-outline-primary"%>
 
-<% end %>
