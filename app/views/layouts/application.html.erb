@@ -14,9 +14,13 @@
 
   <body>
     <%= render 'shared/navbar'%>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <div class="container">
+    <%if flash[:notice].present? %>
+      <p class="notice bg-success p-2 "><%= notice %></p>
+    <% end %>
+    <% if flash[:alert].present? %>
+      <p class="alert bg-danger p-2"><%= alert %></p>
+    <% end %>
+    <div class="container" data-controller="notification">
       <%= yield %>
     </div>
   </body>

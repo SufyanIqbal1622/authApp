@@ -2,3 +2,9 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "bootstrap"
+import "Jquery"
+
+
+$( document ).on('ready', function() {
+  
+});
