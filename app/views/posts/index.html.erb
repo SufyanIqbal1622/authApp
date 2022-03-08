@@ -1,0 +1,15 @@
+
+<h1>Posts</h1>
+
+<div class='d-flex' id="posts">
+  <% @posts.each do |post| %>
+    <div class="card col-6 p-4 m-2">
+      <%= render post %>
+      <p>
+        <%= link_to "Show this post", post, class:'btn btn-info' %>
+      </p>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "New post", new_post_path , class:"btn btn-outline-primary"%>

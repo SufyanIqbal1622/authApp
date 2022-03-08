@@ -1,0 +1,10 @@
+<div class="card col-6 p-4">
+  <%= render @post %>
+
+  <div>
+    <%= link_to "Edit this post", edit_post_path(@post), class:"btn btn-outline-info" %> |
+    <%= link_to "Back to posts", posts_path, class:"btn btn-outline-secondary" %>
+
+    <%= button_to "Destroy this post", @post, method: :delete, class:"btn btn-outline-danger" %>
+  </div>
+</div>
