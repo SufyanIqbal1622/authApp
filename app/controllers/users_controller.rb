@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
-  before_action :load_permission
+  before_action :load_permissions
   before_action :set_user, only: %i[edit update]
 
   def index
@@ -22,7 +22,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @roles = Role.all.order(name: :asc)
+  end
 
   def update
     respond_to do |format|
@@ -41,6 +43,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :role, :password)
+    params.require(:user).permit(:email, :role_id, :password)
   end
 end

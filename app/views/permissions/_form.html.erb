@@ -1,0 +1,41 @@
+<%= form_with(model: permission) do |form| %>
+  <% if permission.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(permission.errors.count, "error") %> prohibited this permission from being saved:</h2>
+
+      <ul>
+        <% permission.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    Resource
+    <%= form.select :subject_class, options_for_select({ 'All': 'All',  'User': 'User',
+                        'Post': 'Post', 'Permission': 'Permission' }, permission.subject_class),
+                      { include_blank: true },
+                      { class: 'form-control select2' } %>
+
+  </div>
+
+  <div class="form-group mt-2">
+      Privilege Level
+    <%= form.select :action, options_for_select({ 'Manage': 'manage',  'Read': 'read',
+                        'Update': 'update', 'Destroy': 'delete' }, permission.action),
+                      { include_blank: true },
+                      { class: 'form-control select2' } %>
+  </div>
+
+   <div class="form-group mt-2">
+    Role
+    <%= form.select :role_id, options_from_collection_for_select(@roles, 'id', 'name', permission&.role&.id),
+                                              {}, class:'form-control',
+                                              required: true %>
+  </div>
+
+  <div class="form-group mt-2">
+    <%= form.submit class:"btn btn-primary" %>
+  </div>
+<% end %>

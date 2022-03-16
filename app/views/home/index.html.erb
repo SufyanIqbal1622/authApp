@@ -1,5 +1,6 @@
 <h1>Welcome</h1>
 <div class="d-flex">
   <%= link_to "Get Started", posts_path, class:'btn btn-outline-success mx-2' %>
-  <%= link_to "See Users", users_path, class:'btn btn-outline-info mx-2'if can? :manage, current_user%>
+  <%= link_to "Manage Users", users_path, class:'btn btn-outline-info mx-2'if can? :manage, current_user%>
+  <%= link_to "Manage Permissions", roles_path, class:'btn btn-outline-info mx-2'if can? :manage, current_user%>
 </div>

@@ -19,10 +19,7 @@
 
   <div class="form-group mt-2">
     <%= form.label :role, style: "display: block" %>
-    <%=form.select :role, options_for_select( [['User', 'user'],
-                                              ['Admin', 'admin'],
-                                              ['Manager', 'manager'],
-                                              ], user&.role ),
+    <%=form.select :role_id, options_from_collection_for_select(@roles, 'id', 'name', user.role_id),
                                               {}, class:'form-control',
                                               required: true %>
   </div>

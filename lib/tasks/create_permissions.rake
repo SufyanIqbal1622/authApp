@@ -4,6 +4,7 @@ namespace :db do
     arr = []
     #load all the controllers
     controllers = Dir.new("#{Rails.root}/app/controllers").entries
+    puts controllers
     controllers.each do |entry|
       if entry =~ /_controller/
         #check if the controller is valid

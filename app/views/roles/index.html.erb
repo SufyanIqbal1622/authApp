@@ -1,0 +1,29 @@
+
+<table class="table">
+  <thead>
+  <%= link_to "New Permission", new_permission_path, class:"btn btn-info" %>
+    <tr>
+
+      <th scope="col">Role</th>
+      <th>Resource</th>
+      <th>Privilege Level</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @roles.each do |role| %>
+      <tr>
+        <th scope="row"><%= role.name %></th>
+      </tr>
+        <% role.permissions.each do |permission| %>
+        <tr>
+          <td></td>
+          <td><%= permission.subject_class %></td>
+          <td><%= permission.action %></td>
+          <td><%= link_to "Edit Permission", edit_permission_path(permission), class:'btn btn-info'  %></td>
+        </tr>
+        <% end %>
+    <% end %>
+    </tr>
+  </tbody>
+</table>
