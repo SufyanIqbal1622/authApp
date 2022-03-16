@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   load_and_authorize_resource
+  before_action :load_permission
   before_action :set_post, only: %i[ show edit update destroy ]
   def index
     @posts = Post.all
